@@ -1476,6 +1476,13 @@ function uv_handle_post_actions(): void {
             }
             uv_send_json( array( 'ok' => true ) );
         }
+
+        case 'seed_live_repertoire': {
+            uv_require_admin_actor();
+            $replace_demo = ! empty( $_POST['replaceDemo'] );
+            $res          = uv_seed_live_umoja_repertoire( $replace_demo );
+            uv_send_json( array( 'ok' => true, 'seeded' => $res ) );
+        }
     }
 }
 add_action( 'init', 'uv_handle_post_actions', 5 );

@@ -2,6 +2,11 @@
 
 All notable changes to the **Umoja Voices (`uv-wp`)** WordPress theme and companion plugin are documented in this file.
 
+## [0.7.0] - 2026-11-09
+
+### Added
+- Provisioned WordPress on Angryhosting (`https://www.umojavoices.co.ke/`) backed by MySQL (`egimba_uv` on `angry-sd-1`), configured `.htaccess` rewrite rules and `.user.ini` 25 MB upload limits, set GitHub Actions FTPS deployment secrets (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`), uploaded all 51 SATB audio (`.mp3`), video (`.mp4`), and sheet-music (`.pdf`) files to `/wp-content/uploads/uv-storage/`, and built `uv_seed_live_umoja_repertoire()` (`wp-content/plugins/uv-wp-content/includes/schema-and-seed.php`) seeding all 12 real Umoja Voices songs, SATB sections, lyrics, the 2026 Portugal & Germany Cultural Exchange Tour logistics, About sections/videos, and External Links (`#7`).
+
 ## [0.6.0] - 2026-11-09
 
 ### Added
