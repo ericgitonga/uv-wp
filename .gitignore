@@ -1,0 +1,31 @@
+# Runtime & local preview
+.wp-runtime/
+wp-admin/
+wp-includes/
+index.php
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+wp-content/database/
+wp-content/db.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/mu-plugins/
+wp-content/plugins/sqlite-database-integration/
+wp-content/plugins/akismet/
+wp-content/plugins/hello.php
+wp-content/themes/twentytwenty*/
+
+# Secrets & environment
+.env
+.env.*
+!.env.example
+
+# OS / IDE / Python / Node caches
+.DS_Store
+__pycache__/
+*.pyc
+node_modules/
+.playwright/

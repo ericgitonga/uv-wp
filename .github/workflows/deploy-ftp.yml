@@ -1,0 +1,46 @@
+name: Deploy to Angryhosting via FTPS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ftp-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Sync Theme & Plugin to Angryhosting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload uv-wp Theme & uv-wp-content Plugin via FTPS
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.FTP_PORT || '21' }}
+          REMOTE_WP_ROOT: ${{ secrets.FTP_REMOTE_ROOT || '/umojavoices.co.ke/www/html' }}
+        run: |
+          if [ -z "$FTP_SERVER" ] || [ -z "$FTP_USERNAME" ] || [ -z "$FTP_PASSWORD" ]; then
+            echo "::notice::FTPS secrets (FTP_SERVER, FTP_USERNAME, FTP_PASSWORD) are not configured yet; skipping remote sync."
+            exit 0
+          fi
+
+          sudo apt-get update && sudo apt-get install -y lftp
+
+          lftp -c "
+            set ftp:ssl-allow true;
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set ssl:verify-certificate no;
+            set net:max-retries 3;
+            set net:timeout 20;
+            open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" -p $FTP_PORT $FTP_SERVER;
+            mirror --reverse --delete --verbose wp-content/themes/uv-wp ${REMOTE_WP_ROOT}/wp-content/themes/uv-wp;
+            mirror --reverse --delete --verbose wp-content/plugins/uv-wp-content ${REMOTE_WP_ROOT}/wp-content/plugins/uv-wp-content;
+            put -O ${REMOTE_WP_ROOT}/ VERSION;
+            bye
+          "
