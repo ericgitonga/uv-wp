@@ -2,6 +2,11 @@
 
 All notable changes to the **Umoja Voices (`uv-wp`)** WordPress theme and companion plugin are documented in this file.
 
+## [0.7.2] - 2026-11-09
+
+### Fixed
+- Added `requests` to `.github/workflows/e2e.yml` Python dependency install step for `e2e/test_rls_security.py`.
+
 ## [0.7.1] - 2026-11-09
 
 ### Fixed

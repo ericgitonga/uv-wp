@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Umoja Voices Content & Choir Portal Engine
  * Description: Relational data model, authentication, SATB media/lyrics/sheet-music management, trip logistics, activity audit trail, storage quota tracking, and wp-admin integration for Umoja Voices (https://www.umojavoices.co.ke/).
- * Version: 0.7.1
+ * Version: 0.7.2
  * Author: Eric Gitonga
  * Text Domain: uv-wp-content
  */
