@@ -2,6 +2,11 @@
 
 All notable changes to the **Umoja Voices (`uv-wp`)** WordPress theme and companion plugin are documented in this file.
 
+## [0.7.1] - 2026-11-09
+
+### Fixed
+- Anchored root WordPress core entries in `.gitignore` (`/index.php`, `/wp-*.php`, `/wp-admin/`, `/wp-includes/`) so `wp-content/themes/uv-wp/index.php` and `wp-content/plugins/uv-wp-content/includes/wp-admin-pages.php` are tracked in Git and preserved by `.github/workflows/deploy-ftp.yml`'s `lftp mirror --reverse --delete`.
+
 ## [0.7.0] - 2026-11-09
 
 ### Added

@@ -1,12 +1,12 @@
 # Runtime & local preview
-.wp-runtime/
-wp-admin/
-wp-includes/
-index.php
-wp-*.php
-xmlrpc.php
-license.txt
-readme.html
+/.wp-runtime/
+/wp-admin/
+/wp-includes/
+/index.php
+/wp-*.php
+/xmlrpc.php
+/license.txt
+/readme.html
 wp-content/database/
 wp-content/db.php
 wp-content/uploads/
